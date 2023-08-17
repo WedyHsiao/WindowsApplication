@@ -1,0 +1,4 @@
+[USER_Control] Startscan: 8/17/2023 3:49:56 PM, Local
+[USER_Control] Target Device: POC_BASE
+ValueChanged :ConnectState : Find device
+[USER_Control] Close the APP: 8/17/2023 3:50:02 PM, Local

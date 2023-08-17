@@ -1,0 +1,30 @@
+C:\Wedy\Tool Development\OTA  Tool\bin\Debug\WACOM DFU.exe.config
+C:\Wedy\Tool Development\OTA  Tool\bin\Debug\WACOM DFU.exe
+C:\Wedy\Tool Development\OTA  Tool\bin\Debug\WACOM DFU.pdb
+C:\Wedy\Tool Development\OTA  Tool\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Wedy\Tool Development\OTA  Tool\bin\Debug\Windows.winmd
+C:\Wedy\Tool Development\OTA  Tool\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\Nordic OTA.csproj.AssemblyReference.cache
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\Nordic OTA.csproj.SuggestedBindingRedirects.cache
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\Nordic_OTA.Form1.resources
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\WACOM_DFU.Properties.Resources.resources
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\Nordic OTA.csproj.GenerateResource.cache
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\Nordic OTA.csproj.CoreCompileInputs.cache
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\Nordic OTA.csproj.CopyComplete
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\WACOM DFU.exe
+C:\Wedy\Tool Development\OTA  Tool\obj\Debug\WACOM DFU.pdb
+C:\Wedy\Tool Development\OTA _Tool\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Wedy\Tool Development\OTA _Tool\bin\Debug\Windows.winmd
+C:\Wedy\Tool Development\OTA _Tool\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\Nordic OTA.csproj.AssemblyReference.cache
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\Nordic OTA.csproj.SuggestedBindingRedirects.cache
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\Nordic_OTA.Form1.resources
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\Nordic OTA.csproj.GenerateResource.cache
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\Nordic OTA.csproj.CoreCompileInputs.cache
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\Nordic OTA.csproj.CopyComplete
+C:\Wedy\Tool Development\OTA _Tool\bin\Debug\BLE_OTA.exe.config
+C:\Wedy\Tool Development\OTA _Tool\bin\Debug\BLE_OTA.exe
+C:\Wedy\Tool Development\OTA _Tool\bin\Debug\BLE_OTA.pdb
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\BLE_OTA.Properties.Resources.resources
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\BLE_OTA.exe
+C:\Wedy\Tool Development\OTA _Tool\obj\Debug\BLE_OTA.pdb

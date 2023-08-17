@@ -1,0 +1,60 @@
+C:\Wedy\Local_Application\WACOM DFU\bin\Debug\WACOM DFU.exe.config
+C:\Wedy\Local_Application\WACOM DFU\bin\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOM DFU\bin\Debug\WACOM DFU.pdb
+C:\Wedy\Local_Application\WACOM DFU\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Wedy\Local_Application\WACOM DFU\bin\Debug\Windows.winmd
+C:\Wedy\Local_Application\WACOM DFU\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM DFU.csproj.AssemblyReference.cache
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM DFU.csproj.SuggestedBindingRedirects.cache
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM_DFU.Form1.resources
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM_DFU.Properties.Resources.resources
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM DFU.csproj.GenerateResource.cache
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM DFU.csproj.CoreCompileInputs.cache
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM DFU.csproj.CopyComplete
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOM DFU\obj\Debug\WACOM DFU.pdb
+C:\Wedy\Local_Application\WACOMDFU\bin\Debug\WACOM DFU.exe.config
+C:\Wedy\Local_Application\WACOMDFU\bin\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOMDFU\bin\Debug\WACOM DFU.pdb
+C:\Wedy\Local_Application\WACOMDFU\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Wedy\Local_Application\WACOMDFU\bin\Debug\Windows.winmd
+C:\Wedy\Local_Application\WACOMDFU\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM DFU.csproj.AssemblyReference.cache
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM DFU.csproj.SuggestedBindingRedirects.cache
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM_DFU.Form1.resources
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM_DFU.Properties.Resources.resources
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM DFU.csproj.GenerateResource.cache
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM DFU.csproj.CoreCompileInputs.cache
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM DFU.csproj.CopyComplete
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOMDFU\obj\Debug\WACOM DFU.pdb
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\bin\Debug\WACOM DFU.exe.config
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\bin\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\bin\Debug\WACOM DFU.pdb
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\bin\Debug\Windows.winmd
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM DFU.csproj.AssemblyReference.cache
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM DFU.csproj.SuggestedBindingRedirects.cache
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM_DFU.Form1.resources
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM_DFU.Properties.Resources.resources
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM DFU.csproj.GenerateResource.cache
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM DFU.csproj.CoreCompileInputs.cache
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM DFU.csproj.CopyComplete
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOMDFU_DEBUG\obj\Debug\WACOM DFU.pdb
+C:\Wedy\Local_Application\WACOMDFU_SILENT\bin\Debug\WACOM DFU.exe.config
+C:\Wedy\Local_Application\WACOMDFU_SILENT\bin\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOMDFU_SILENT\bin\Debug\WACOM DFU.pdb
+C:\Wedy\Local_Application\WACOMDFU_SILENT\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Wedy\Local_Application\WACOMDFU_SILENT\bin\Debug\Windows.winmd
+C:\Wedy\Local_Application\WACOMDFU_SILENT\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM DFU.csproj.AssemblyReference.cache
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM DFU.csproj.SuggestedBindingRedirects.cache
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM_DFU.Form1.resources
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM_DFU.Properties.Resources.resources
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM DFU.csproj.GenerateResource.cache
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM DFU.csproj.CoreCompileInputs.cache
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM DFU.csproj.CopyComplete
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM DFU.exe
+C:\Wedy\Local_Application\WACOMDFU_SILENT\obj\Debug\WACOM DFU.pdb
