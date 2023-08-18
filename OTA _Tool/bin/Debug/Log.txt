@@ -1,4 +1,84 @@
-[USER_Control] Startscan: 8/17/2023 3:49:56 PM, Local
+[USER_Control] Startscan: 8/18/2023 9:24:15 PM, Local
 [USER_Control] Target Device: POC_BASE
 ValueChanged :ConnectState : Find device
-[USER_Control] Close the APP: 8/17/2023 3:50:02 PM, Local
+ValueChanged :ConnectState : Accessing
+ValueChanged :ConnectState : Aceess Pass
+ValueChanged :FWinfo : 16.x15
+ValueChanged :BatteryStatus : 98
+[USER_Control] Enter Legacy DFU: 8/18/2023 9:24:19 PM, Local
+ValueChanged :DFUStatus : EnterBootloader
+[EVENT] Recieved ACK for Enter Bootloader then Scan DFU Device: 8/18/2023 9:24:19 PM, Local
+ValueChanged :DFUStatus : FIND_DFU_TARGET
+[EVENT] Find DFU Device: 8/18/2023 9:24:19 PM, Local
+ValueChanged :DFUStatus : Init_DFU
+[EVENT] Start DFU Init Progress: 8/18/2023 9:24:20 PM, Local
+ValueChanged :DFUStatus : Start Send FirmwareImage
+[EVENT] Start sending Image: 8/18/2023 9:24:21 PM, Local
+ValueChanged :intervalEndVal : 21
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 0
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 5
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 12
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 15
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 20
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 25
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 30
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 35
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 40
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 45
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 50
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 55
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 60
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 65
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 70
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 75
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 80
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 85
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 90
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 95
+ValueChanged :ImagePageStatus : CRC get
+ValueChanged :ImagePageStatus : execute done
+ValueChanged :UpdateValue : 100
+[EVENT] End sending Image: 8/18/2023 9:24:31 PM, Local
+[USER_Control] Close the APP: 8/18/2023 9:24:36 PM, Local
+[DEBUG] Clear ble device
+[USER_Control] Close the APP: 8/18/2023 9:24:36 PM, Local

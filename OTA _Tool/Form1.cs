@@ -26,11 +26,14 @@ namespace Nordic_OTA
 
         private bool ImagePageCRCGet = false;
         private bool ImagePageExeDone = false;
+        private bool Update_Progress_Done = false;
         private int sendImageCount = 0;
         private int sendImageMax = 0;
         int intervalEndVal = 0;
 
         public string FirmwareStr = "";
+        public string SoftwareStr = "";
+        public int BatteryValue;
 
         public Form1()
         {
@@ -77,6 +80,10 @@ namespace Nordic_OTA
                 //Wedy 0628 add to close the channel
                 bluetooth.clearDFUBTStatus();
                 bluetooth.clearBTStatus();
+
+                //Wedy 0818 add for clean the BLE access issue after the reconnect when update finished
+                bluetooth.DisconnectAsync();
+
                 Close();
             }
 
@@ -160,7 +167,7 @@ namespace Nordic_OTA
                         else
                         {
                             //Wedy mark to enter the Device service information after connection
-                            bluetooth.ReadDevice_Firmware();
+                            bluetooth.ReadDevice_Version();
                         }
                     }
                     else if (str == "No device")
@@ -197,22 +204,78 @@ namespace Nordic_OTA
                     }
                     break;
 
-                case MsgType.DISinfo:
+                case MsgType.FWinfo:
 
                     FirmwareStr = str;
 
                     if (Failed)
                     {
-                        Debug.WriteLine("Current Version = " + str);
+                        Debug.WriteLine("Current BLE Version = " + str);
                     }
                     else
                     {
-                        string msg = "current version " + str;
+                        string msg = "BLE version " + str;
+                        UpdateUI(msg, label5);
+                    }
+                    if (!Update_Progress_Done)
+                    {
+                        //Wedy: add condition for checking the battery level
+                        bluetooth.ReadDevice_Battery();
+                    }
+                    break;
+
+                case MsgType.SWinfo:
+
+                    SoftwareStr = str;
+
+                    if (Failed)
+                    {
+                        Debug.WriteLine("Current ASIC Version = " + str);
+                        string msg = "NA";
+                        UpdateUI(msg, label6);
+
+                    }
+                    else
+                    {
+                        string msg = "ASIC version " + str;
+                        UpdateUI(msg, label6);
+                    }
+
+                    if (!Update_Progress_Done)
+                    {
+                        //Wedy: add condition for checking the battery level
+                        bluetooth.ReadDevice_Battery();
+                    }
+
+                    break;
+
+                case MsgType.BatteryStatus:
+
+                    try
+                    {
+                        BatteryValue = Convert.ToInt16(str);
+                    }
+                    catch
+                    {
+                        BatteryValue = 0;
+                    }
+
+                    if (BatteryValue >= 30)
+                    {
+                        string msg = "Battery level " + str + "%";
                         UpdateUI(msg, label1);
 
                         //Wedy: enable the update function after access the service
                         enter_update = true;
                         UpdateUI("Update", button1);
+                    }
+                    else
+                    {
+                        string msg = "Battery below 30%";
+                        UpdateUI(msg, label1);
+
+                        Console.WriteLine("Battery Level Below 30%: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+                        UpdateUI("Done", button1);
                     }
                     break;
 
@@ -239,7 +302,7 @@ namespace Nordic_OTA
                     }
                     else if (str == "Start Send FirmwareImage")
                     {
-                        string msg = "Start Sending Imag";
+                        string msg = "Start Sending";
                         UpdateUI(msg, label1);
 
                         Console.WriteLine("[EVENT] Start sending Image: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
@@ -259,6 +322,10 @@ namespace Nordic_OTA
                 case MsgType.UpdateValue:
                     if (str == "100")
                     {
+                        bluetooth.isGetswVer = false;
+                        bluetooth.isGetfwVer = false;
+                        Update_Progress_Done = true;
+
                         UpdateUI("Done", button1);
                         
                         Console.WriteLine("[EVENT] End sending Image: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);

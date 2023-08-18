@@ -24,7 +24,9 @@ namespace BT_NORDIC
     {
         intervalEndVal,
         ConnectState,
-        DISinfo,
+        FWinfo,
+        SWinfo,
+        BatteryStatus,
         DFUStatus,
         ImagePageStatus,
         UpdateValue,
@@ -43,6 +45,7 @@ namespace BT_NORDIC
         public GattCharacteristic registeredCharacteristic;
         public GattCharacteristic BTLControlCharacteristic;
         public GattCharacteristic BTLPackageCharacteristic;
+        public GattCharacteristic BatteryLevelCharacteristic;
 
         private GattDeviceService SecureDFUservice = null;
         public GattDeviceService batteryservice = null;
@@ -75,6 +78,7 @@ namespace BT_NORDIC
 
         public bool inConnect = false;
         public bool isGetfwVer = false;
+        public bool isGetswVer = false;
         public bool getBootloaderACK = false;
         public bool isSilentDFU = false; //Wedy June Modified
         bool scanDFUtarg = false;
@@ -83,6 +87,7 @@ namespace BT_NORDIC
 
         int retryConnectNum = 10;
         int retryConnectCount = 0;
+        int batteryLevel;
 
         //using the class from function.cs
         CMD cmd = new CMD();
@@ -248,7 +253,7 @@ namespace BT_NORDIC
                     foreach (DeviceInformation DUT in deviceInformation)
                     {
                         //Wedy: Check the target device is existed
-                        if (DUT.Name.ToString() == NameofStylus) //"Dell PN7522W"
+                        if (DUT.Name.ToString() == NameofStylus) 
                         {
                             countDUT++;
                             DUT_DeviceInfo = DUT;
@@ -302,7 +307,7 @@ namespace BT_NORDIC
                         Debug.WriteLine("[DEBUG] Matching: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
 
                         //Wedy mark for the target device
-                        if (DUT_Device.Name.ToString() == NameofStylus) //"Dell PN7522W"
+                        if (DUT_Device.Name.ToString() == NameofStylus) 
                         {
                             Debug.WriteLine("[DEBUG] Find the target pen: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
 
@@ -403,7 +408,7 @@ namespace BT_NORDIC
 
 
         #region Read the service information for main device
-        public void ReadDevice_Firmware()
+        public void ReadDevice_Version()
         {
             var success = Task.Run(async () => await ReadDevice_Service(cancellationTokenSource.Token));
 
@@ -417,7 +422,7 @@ namespace BT_NORDIC
 
             try
             {
-                if (!isGetfwVer)
+                if (!isGetfwVer&&!isGetswVer)
                 {
                     if (deviceservice == null)
                     {
@@ -442,7 +447,7 @@ namespace BT_NORDIC
                     foreach (GattCharacteristic c in Device_Characteristics_INFO)
                     {
                         GattCharacteristicProperties properties = c.CharacteristicProperties;
-                        Debug.WriteLine($"[DEBUG] Firmware Revision characteristics: {c.Uuid}");
+                        Debug.WriteLine($"[DEBUG] Characteristic UUID: {c.Uuid}");
                         if (properties.HasFlag(GattCharacteristicProperties.Read))
                         {
                             // This characteristic supports reading from it.
@@ -452,18 +457,37 @@ namespace BT_NORDIC
                                 GattNativeCharacteristicUuid charName;
                                 if (Enum.TryParse(Utilities.ConvertUuidToShortId(c.Uuid).ToString(), out charName))
                                 {
-                                    if (charName.ToString() == "FirmwareRevisionString")
+                                    switch (charName)
                                     {
-                                        byte[] data;
-                                        isGetfwVer = true;
-                                        Debug.WriteLine("[DEBUG] Device Service Accessed Done: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
-                                        CryptographicBuffer.CopyToByteArray(result1.Value, out data);
-                                        
-                                        //Get Firmware Version
-                                        ValueChanged(MsgType.DISinfo, Encoding.UTF8.GetString(data));
-                                        Debug.WriteLine("[DEBUG] Current FW version is " + Encoding.UTF8.GetString(data));
-                                        Debug.WriteLine("[DEBUG] FW version recieved {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
-                                        return true;
+                                        case GattNativeCharacteristicUuid.FirmwareRevisionString:
+                                            byte[] datafirmware;
+                                            isGetfwVer = true;
+                                            Debug.WriteLine("[DEBUG] Device Service Firmware Accessed Done: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+                                            CryptographicBuffer.CopyToByteArray(result1.Value, out datafirmware);
+
+                                            //Get Firmware Version
+                                            ValueChanged(MsgType.FWinfo, Encoding.UTF8.GetString(datafirmware));
+                                            Debug.WriteLine("[DEBUG] Current FW version is " + Encoding.UTF8.GetString(datafirmware));
+                                            Debug.WriteLine("[DEBUG] FW version recieved {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+
+                                            break;
+
+                                        case GattNativeCharacteristicUuid.SoftwareRevisionString:
+                                            byte[] dataSoftware;
+                                            isGetswVer = true;
+                                            Debug.WriteLine("[DEBUG] Device Service Software Accessed Done: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+                                            CryptographicBuffer.CopyToByteArray(result1.Value, out dataSoftware);
+
+                                            
+                                            // Get Software Version
+                                            ValueChanged(MsgType.SWinfo, Encoding.UTF8.GetString(dataSoftware));
+                                            Debug.WriteLine("[DEBUG] Current Software version is " + Encoding.UTF8.GetString(dataSoftware));
+                                            Debug.WriteLine("[DEBUG] Software version received {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+
+                                            break;
+
+                                        default:
+                                            break;
                                     }
                                 }
                             }
@@ -471,6 +495,11 @@ namespace BT_NORDIC
                             {
                                 clearBTStatus();
 
+                            }
+
+                            if (isGetfwVer&&isGetswVer)
+                            {
+                                return true;
                             }
                         }
                     }
@@ -484,6 +513,71 @@ namespace BT_NORDIC
             return false;
         }
         
+        public void ReadDevice_Battery()
+        {
+            var success = Task.Run(async () => await ReadBattery_Service(cancellationTokenSource.Token));
+        }
+
+        private async Task<bool> ReadBattery_Service(CancellationToken cts)
+        {
+            GattCharacteristicsResult GattResult = null;
+            IReadOnlyList<GattCharacteristic> BATTERY_INFO = null;
+            Debug.WriteLine("[DEBUG] ReadBattery_Service {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+            
+            if (batteryservice == null)
+            {
+                return false;
+            }
+
+            //Discover the characteristic of Battery service
+            GattResult = await batteryservice.GetCharacteristicsAsync(BluetoothCacheMode.Uncached);
+            Debug.WriteLine("[DEBUG] batteryservice GetCharacteristicsAsync: {0}, {1:G}",DateTime.Now.ToString(culture), DateTime.Now.Kind);
+                if (GattResult.Status != GattCommunicationStatus.Success)
+                {
+                    Debug.WriteLine("BatteryService GetCharateristic failed:{0}", GattResult.Status.ToString());
+                    BATTERY_INFO = new List<GattCharacteristic>();
+                    batteryservice.Dispose();
+                    clearBTStatus();
+                    ValueChanged(MsgType.ConnectState, "Access fail");
+                    return false;
+                }
+              BATTERY_INFO = GattResult.Characteristics;
+
+            foreach (GattCharacteristic c in BATTERY_INFO)
+            {
+                BatteryLevelCharacteristic = c;
+                if (BatteryLevelCharacteristic == null) 
+                {
+                    Debug.WriteLine("[DEBUG] BatteryLevel Charateristic Null: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+                    return false; 
+                }
+
+                GattReadResult result1 = await BatteryLevelCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
+
+                if (result1.Status == GattCommunicationStatus.Success)
+                {
+                    Debug.WriteLine("[DEBUG] BatteryLevel Charateristic Access: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+                    if (result1.Value != null)
+                    {
+                        byte[] data;
+                        CryptographicBuffer.CopyToByteArray(result1.Value, out data);
+                        batteryLevel = data[0];
+                        ValueChanged(MsgType.BatteryStatus, data[0].ToString());
+                        Debug.WriteLine("[DEBUG] Current BatteryLevel is " + data[0].ToString());
+                        break;
+                    }
+
+                }
+                else
+                {
+                    Debug.WriteLine("ReadBattery_Service Failed: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
+                    clearBTStatus();
+                }
+
+            }
+            return true;
+        }
+
         public async Task<bool> SelectDeviceService(CancellationToken cts) // Discover all service and focus to check DFU service existed
         {
             Debug.WriteLine("[DEBUG] SelectDeviceService start: {0}, {1:G}", DateTime.Now.ToString(culture), DateTime.Now.Kind);
@@ -1415,6 +1509,53 @@ namespace BT_NORDIC
         }
         #endregion
 
+        #region Clean BLE Connection
+        //Wedy 0818 add for clean the BLE access issue after the reconnect when update finished
+        public async Task DisconnectAsync()
+        {
+            var aa = await ClearBluetoothLEDeviceAsync(cancellationTokenSource.Token);
+
+        }
+        public async Task<bool> ClearBluetoothLEDeviceAsync(CancellationToken cts)
+        {
+            Debug.WriteLine("[DEBUG] ClearBluetoothLEDeviceAsync");
+            asyncLock = false;
+            if (subscribedForNotifications)
+            {
+                // Need to clear the CCCD from the remote device so we stop receiving notifications
+                if (registeredCharacteristic != null)
+                {
+                    var result = await registeredCharacteristic.WriteClientCharacteristicConfigurationDescriptorAsync(GattClientCharacteristicConfigurationDescriptorValue.None);
+                    if (result != GattCommunicationStatus.Success)
+                    {
+                        //return false;
+                    }
+                    else
+                    {
+                        registeredCharacteristic.ValueChanged -= Characteristic_ValueChanged;
+                    }
+
+                }
+                subscribedForNotifications = false;
+            }
+
+            if (DUT_Device != null)
+            {
+                Console.WriteLine("[DEBUG] Clear ble device");
+                foreach (var ser in Device_ServiceCollection)
+                {
+                    ser.service?.Dispose();
+                }
+                DUT_Device = null;
+                DUT_Device.ConnectionStatusChanged -= DUT_Device_ConnectionStatusChanged;
+
+                DUT_Device.Dispose();
+                GC.Collect();
+
+            }
+            return true;
+        }
+        #endregion 
 
         private BluetoothLEDeviceDisplay FindBluetoothLEDeviceDisplay(string id)
         {
