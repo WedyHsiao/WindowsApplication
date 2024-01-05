@@ -1,0 +1,61 @@
+HRT# device list
+Found 41 HID devices:
+[0] HID Sensor Collection V2 [VID: 0x0000] [PID: 0x0000] [Connected: True] [IsOpen: False]
+[1] HID-compliant mouse [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[2] HID-compliant consumer control device [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[3] HID-compliant vendor-defined device [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[4] HID-compliant system controller [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[5] HID-compliant vendor-defined device [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[6] HID-compliant mouse [VID: 0x04f3] [PID: 0x3187] [Connected: True] [IsOpen: False]
+[7] HID-compliant vendor-defined device [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[8] HID-compliant vendor-defined device [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[9] HID Keyboard Device [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[10] HID-compliant vendor-defined device [VID: 0x04f3] [PID: 0x3187] [Connected: True] [IsOpen: False]
+[11] HID Keyboard Device [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[12] HID-compliant touch pad [VID: 0x04f3] [PID: 0x3187] [Connected: True] [IsOpen: False]
+[13] HID-compliant touch screen [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[14] Microsoft Input Configuration Device [VID: 0x04f3] [PID: 0x3187] [Connected: True] [IsOpen: False]
+[15] HID-compliant vendor-defined device [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[16] Microsoft Input Configuration Device [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[17] HID-compliant vendor-defined device [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[18] HID-compliant pen [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[19] HID-compliant vendor-defined device [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[20] HID Keyboard Device [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[21] HID-compliant device [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[22] HID-compliant vendor-defined device [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[23] HID-compliant digitizer [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[24] HID Keyboard Device [VID: 0x8087] [PID: 0x0a1e] [Connected: True] [IsOpen: False]
+[25] HID-compliant mouse [VID: 0x056a] [PID: 0x5277] [Connected: True] [IsOpen: False]
+[26] HID-compliant mouse [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[27] HID-compliant vendor-defined device [VID: 0x0bda] [PID: 0x1100] [Connected: True] [IsOpen: False]
+[28] HID-compliant consumer control device [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[29] HID Sensor Collection V2 [VID: 0x0000] [PID: 0x0000] [Connected: True] [IsOpen: False]
+[30] HID-compliant system controller [VID: 0x8087] [PID: 0x0a1e] [Connected: True] [IsOpen: False]
+[31] HID-compliant vendor-defined device [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[32] HID-compliant system controller [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[33] HID Keyboard Device [VID: 0x25a7] [PID: 0xfa70] [Connected: True] [IsOpen: False]
+[34] HID Keyboard Device [VID: 0x046d] [PID: 0xc52b] [Connected: True] [IsOpen: False]
+[35] HID Keyboard Device [VID: 0x000e] [PID: 0x3412] [Connected: True] [IsOpen: False]
+[36] HID Keyboard Device [VID: 0x000e] [PID: 0x3412] [Connected: True] [IsOpen: False]
+[37] HID-compliant consumer control device [VID: 0x000e] [PID: 0x3412] [Connected: True] [IsOpen: False]
+[38] HID-compliant system controller [VID: 0x000e] [PID: 0x3412] [Connected: True] [IsOpen: False]
+[39] HID Keyboard Device [VID: 0x04f2] [PID: 0x866b] [Connected: True] [IsOpen: False]
+[40] HID-compliant device [VID: 0x04f2] [PID: 0x866b] [Connected: True] [IsOpen: False]
+HRT# device select
+Syntax: device select <List ID>
+HRT# device select 40
+Selected device 40. [VID: 0x04f2] [PID: 0x866b]
+HRT# report send 02 0A 01 05 10
+Received report data: 0A-01-05-10
+Expected output report size: 17
+Sending report to the HID device... [ID: 2] [Data Size: 17 bytes]
+Data: 0A-01-05-10-00-00-00-00-00-00-00-00-00-00-00-00-00
+Sending report to the HID device... [ID: 2] [Data Size: 17 bytes]
+Data:
+0a-01-05-10-00-00-00-00-00-00-00-00-00-00-00-00-00
+HID report successfully sent.
+HRT# report listen
+Input Report Byte Length: 9
+Press Ctrl+C to stop listening.
+Received InputReport [ID: 2] [Data Size: 8 bytes]
+Data: 0A-00-05-0F-00-00-00-00

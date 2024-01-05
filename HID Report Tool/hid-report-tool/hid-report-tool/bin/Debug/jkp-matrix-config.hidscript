@@ -1,0 +1,367 @@
+# Script for initialising the keyboard matrix of the JKP HID keyboard.
+# Copyright (c) 2019 by Johannes Berndorfer (berndoJ)
+
+# Key map types:
+# - 0: Modifier
+# - 1: Static (HID Keycode)
+# - 2: Action
+# - 3: None
+
+# Key modifier types:
+# - 0: HID
+# - 1: Key Layer
+
+#           2 CM KL TY IL IH D0 D1 D2 D3 D4 D5 D6 D7 D8 ...
+
+@cmd-echo-off
+
+# M1
+report send 2 80-00-02-01-00-00
+# M2
+report send 2 80-00-02-02-00-00
+# M3
+report send 2 80-00-02-03-00-00
+# M4
+report send 2 80-00-02-04-00-00
+# M5
+report send 2 80-00-02-05-00-00
+# M6
+report send 2 80-00-02-06-00-00
+# M7
+report send 2 80-00-02-07-00-00
+
+# ESC
+report send 2 80-00-01-08-00-29
+# ASTERIX
+report send 2 80-00-01-09-00-55
+# DEGREES
+report send 2 80-00-01-0a-00-35
+# TAB
+report send 2 80-00-01-0b-00-2b
+# CAPSLOCK
+report send 2 80-00-01-0c-00-39
+# L-SHIFT
+report send 2 80-00-00-0d-00-00-01
+# L-CTRL
+report send 2 80-00-00-0e-00-00-00
+
+# F1
+report send 2 80-00-01-0f-00-0a
+# DOUBLE QUOTES
+report send 2 80-00-02-10-00-00
+# 1
+report send 2 80-00-01-11-00-1e
+# Q
+report send 2 80-00-01-12-00-14
+# A
+report send 2 80-00-01-13-00-04
+# (GER) <>|
+report send 2 80-00-01-14-00-64
+# L-GUI
+report send 2 80-00-00-15-00-00-03
+
+# F2
+report send 2 80-00-01-16-00-3b
+# EQUALS
+report send 2 80-00-01-17-00-86
+# 2
+report send 2 80-00-01-18-00-1f
+# W
+report send 2 80-00-01-19-00-1a
+# S
+report send 2 80-00-01-1a-00-16
+# Z
+report send 2 80-00-01-1b-00-1d
+# L-ALT
+report send 2 80-00-00-1c-00-00-02
+
+# F3
+report send 2 80-00-01-1d-00-3c
+# EXCL-MARK
+report send 2 80-00-01-1e-00-cf
+# 3
+report send 2 80-00-01-1f-00-20
+# E
+report send 2 80-00-01-20-00-08
+# D
+report send 2 80-00-01-21-00-07
+# X
+report send 2 80-00-01-22-00-1b
+# NONE
+report send 2 80-00-03-23-00
+
+# F4
+report send 2 80-00-01-24-00-3d
+# VERT-LINE
+report send 2 80-00-01-25-00-c9
+# 4
+report send 2 80-00-01-26-00-21
+# R
+report send 2 80-00-01-27-00-15
+# F
+report send 2 80-00-01-28-00-09
+# C
+report send 2 80-00-01-29-00-06
+# NONE
+report send 2 80-00-03-2a-00
+
+# F5
+report send 2 80-00-01-2b-00-3e
+# AMPERSAND
+report send 2 80-00-01-2c-00-c7
+# 5
+report send 2 80-00-01-2d-00-22
+# T
+report send 2 80-00-01-2e-00-17
+# G
+report send 2 80-00-01-2f-00-0a
+# V
+report send 2 80-00-01-30-00-19
+# NONE
+report send 2 80-00-03-31-00
+
+# F6
+report send 2 80-00-01-32-00-3f
+# L-SQ-PAREN
+report send 2 80-00-02-33-00-00
+# 6
+report send 2 80-00-01-34-00-23
+# Y
+report send 2 80-00-01-35-00-1c
+# H
+report send 2 80-00-01-36-00-0b
+# B
+report send 2 80-00-01-37-00-05
+# SPACE
+report send 2 80-00-01-38-00-2c
+
+# F7
+report send 2 80-00-01-39-00-40
+# L-CURL-PAREN
+report send 2 80-00-01-3a-00-b8
+# 7
+report send 2 80-00-01-3b-00-24
+# U
+report send 2 80-00-01-3c-00-18
+# J
+report send 2 80-00-01-3d-00-0d
+# N
+report send 2 80-00-01-3e-00-11
+# NONE
+report send 2 80-00-03-3f-00
+
+# F8
+report send 2 80-00-01-40-00-41
+# L-PAREN
+report send 2 80-00-01-41-00-b6
+# 8
+report send 2 80-00-01-42-00-25
+# I
+report send 2 80-00-01-43-00-0c
+# K
+report send 2 80-00-01-44-00-0e
+# M
+report send 2 80-00-01-45-00-10
+# NONE
+report send 2 80-00-03-46-00
+
+# F9
+report send 2 80-00-01-47-00-42
+# R-PAREN
+report send 2 80-00-01-48-00-b7
+# 9
+report send 2 80-00-01-49-00-26
+# O
+report send 2 80-00-01-4a-00-12
+# L
+report send 2 80-00-01-4b-00-0f
+# COMMA
+report send 2 80-00-01-4c-00-36
+# NONE
+report send 2 80-00-03-4d-00
+
+# F10
+report send 2 80-00-01-4e-00-43
+# R-CURL-PAREN
+report send 2 80-00-01-4f-00-b9
+# 0
+report send 2 80-00-01-50-00-27
+# P
+report send 2 80-00-01-51-00-13
+# (GER) UML-O
+report send 2 80-00-01-52-00-33
+# DOT
+report send 2 80-00-01-53-00-37
+# R-ALT
+report send 2 80-00-00-54-00-00-06
+
+# F11
+report send 2 80-00-01-55-00-44
+# R-SQ-PAREN
+report send 2 80-00-02-56-00-00
+# (GER) UML-S / ?
+report send 2 80-00-01-57-00-2d
+# (GER) UML-U
+report send 2 80-00-01-58-00-2f
+# (GER) UML-A
+report send 2 80-00-01-59-00-34
+# (GER) - / _
+report send 2 80-00-01-5a-00-38
+# R-GUI
+report send 2 80-00-00-5b-00-00-07
+
+# F12
+report send 2 80-00-01-5c-00-45
+# QUESTIONMARK
+report send 2 80-00-01-5d-00-db
+# (GER) GRAVE
+report send 2 80-00-01-5e-00-2e
+# (GER) + / * / ~
+report send 2 80-00-01-5f-00-30
+# (GER) # / '
+report send 2 80-00-01-60-00-32
+# NONE
+report send 2 80-00-03-61-00
+# FN
+report send 2 80-00-00-62-00-01-00
+
+# F13
+report send 2 80-00-01-63-00-68
+# <
+report send 2 80-00-01-64-00-c5
+# BACKSPACE
+report send 2 80-00-01-65-00-2a
+# ENTER
+report send 2 80-00-01-66-00-28
+# NONE
+report send 2 80-00-03-67-00
+# R-SHIFT
+report send 2 80-00-00-68-00-00-05
+# R-CTRL
+report send 2 80-00-00-69-00-00-04
+
+# F14
+report send 2 80-00-01-6a-00-69
+# >
+report send 2 80-00-01-6b-00-c6
+# NONE
+report send 2 80-00-03-6c-00
+# NONE
+report send 2 80-00-03-6d-00
+# NONE
+report send 2 80-00-03-6e-00
+# NONE
+report send 2 80-00-03-6f-00
+# NONE
+report send 2 80-00-03-70-00
+
+# PRNT-SCRN
+report send 2 80-00-01-71-00-46
+# UNDO
+report send 2 80-00-01-72-00-7a
+# INSERT
+report send 2 80-00-01-73-00-49
+# DELETE
+report send 2 80-00-01-74-00-4c
+# HOME
+report send 2 80-00-01-75-00-4a
+# END
+report send 2 80-00-01-76-00-4d
+# NONE
+report send 2 80-00-03-77-00
+
+# SCROLL-LOCK
+report send 2 80-00-01-78-00-47
+# VOL-UP
+report send 2 80-00-01-79-00-80
+# PAUSE
+report send 2 80-00-01-7a-00-48
+# VOL-DN
+report send 2 80-00-01-7b-00-81
+# PAGE-UP
+report send 2 80-00-01-7c-00-4b
+# PAGE-DN
+report send 2 80-00-01-7d-00-4e
+
+# NONE
+report send 2 80-00-03-7e-00
+# NONE
+report send 2 80-00-03-7f-00
+# NONE
+report send 2 80-00-03-80-00
+# RIGHT-ARROW
+report send 2 80-00-01-81-00-4f
+# UP-ARROW
+report send 2 80-00-01-82-00-52
+# DOWN-ARROW
+report send 2 80-00-01-83-00-51
+# LEFT-ARROW
+report send 2 80-00-01-84-00-50
+
+# NUM-LOCK
+report send 2 80-00-01-85-00-53
+# KEYPAD-7
+report send 2 80-00-01-86-00-5f
+# KEYPAD-4
+report send 2 80-00-01-87-00-5c
+# KEYPAD-1
+report send 2 80-00-01-88-00-59
+# KEYPAD-0
+report send 2 80-00-01-89-00-62
+# KEYPAD-COMMA
+report send 2 80-00-01-8a-00-85
+# NONE
+report send 2 80-00-03-8b-00
+
+# KEYPAD-SLASH
+report send 2 80-00-01-8c-00-54
+# KEYPAD-8
+report send 2 80-00-01-8d-00-60
+# KEYPAD-5
+report send 2 80-00-01-8e-00-5d
+# KEYPAD-2
+report send 2 80-00-01-8f-00-5a
+# NONE
+report send 2 80-00-03-90-00
+# NONE
+report send 2 80-00-03-91-00
+# NONE
+report send 2 80-00-03-92-00
+
+# KEYPAD-ASTERIX
+report send 2 80-00-01-93-00-55
+# KEYPAD-9
+report send 2 80-00-01-94-00-61
+# KEYPAD-6
+report send 2 80-00-01-95-00-5e
+# KEYPAD-3
+report send 2 80-00-01-96-00-5b
+# KEYPAD-MINUS
+report send 2 80-00-01-97-00-56
+# KEYPAD-PLUS
+report send 2 80-00-01-98-00-57
+# KEYPAD-ENTER
+report send 2 80-00-01-99-00-58
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
