@@ -237,6 +237,96 @@ namespace hid_report_tool
                                 Thread.Sleep(1000);
                             
                             break;
+
+                        //Wedy add for set feature report
+                        case "set":
+                            if (selected_device == null)
+                            {
+                                Console.WriteLine("No device selected.");
+                                break;
+                            }
+
+                            selected_device.OpenDevice();
+
+                            byte set_report_id = 0;
+                            byte[] set_report_data_raw;
+
+                            if (cmds.Count() < 4)
+                            {
+                                Console.WriteLine("Syntax: report set <report-id> <report-data>");
+                                break;
+                            }
+
+                            if (!byte.TryParse(cmds[2], out set_report_id))
+                            {
+                                Console.WriteLine("The set report id given is not a valid id.");
+                                break;
+                            }
+
+                            try
+                            {
+                                string inputString = string.Join("", cmds.Skip(3));
+
+                                set_report_data_raw = StringToByteArray(inputString.Replace("-", "").Replace(":", ""));
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Invalid report data.");
+                                break;
+                            }
+
+                            Console.WriteLine($"Received set report data: {BitConverter.ToString(set_report_data_raw)}");
+                            Console.WriteLine($"Expected Feature report size: {selected_device.Capabilities.FeatureReportByteLength}");
+
+                            // Ensure that report_data has the correct size
+                            byte[] set_report_data = new byte[selected_device.Capabilities.FeatureReportByteLength];
+
+                            set_report_data[0] = set_report_id;
+
+                            // Copy the received data to report_data
+                            for (int i = 0; i < set_report_data_raw.Length && i < set_report_data.Length; i++)
+                            {
+                                set_report_data[i+1] = set_report_data_raw[i];
+                            }
+
+                            Console.WriteLine($"Set Feature Report to the HID device... [ID: {set_report_id}] [Data Size: {set_report_data.Length} bytes]");
+                            Console.WriteLine("Data: " + BitConverter.ToString(set_report_data));
+
+
+                            Console.WriteLine($"Set Feature Report to the HID device... [ID: {set_report_id}] [Data Size: {set_report_data.Length} bytes]");
+                            Console.WriteLine("Data: ");
+                            bool set_initial_byte = true;
+                            foreach (byte b in set_report_data)
+                            {
+                                if (!set_initial_byte)
+                                {
+                                    Console.Write("-");
+                                }
+                                else
+                                {
+                                    initial_byte = false;
+                                }
+                                Console.Write($"{b.ToString("X2").ToLower()}");
+                            }
+                            Console.WriteLine();
+
+                            HidReport set_report = new HidReport(selected_device.Capabilities.FeatureReportByteLength);
+                            set_report.ReportId = set_report_id;
+                            set_report.Data = set_report_data;
+                            bool set_report_sent = selected_device.WriteFeatureData(set_report_data);
+
+                            selected_device.CloseDevice();
+
+                            if (set_report_sent)
+                            {
+                                Console.WriteLine("HID Set Feature Report successfully sent.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("An error occurred while set feature report.");
+                            }
+                            break;
+
                         default:
                             Console.WriteLine("Syntax: report <send|listen> [...]");
                             break;
