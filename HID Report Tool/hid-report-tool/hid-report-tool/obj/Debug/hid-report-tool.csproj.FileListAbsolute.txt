@@ -36,8 +36,8 @@ C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\bin\Deb
 C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\bin\Debug\HidLibrary.dll
 C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\bin\Debug\HidLibrary.pdb
 C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\obj\Debug\hid-report-tool.csproj.AssemblyReference.cache
-C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\obj\Debug\hid-report-tool.csproj.SuggestedBindingRedirects.cache
 C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\obj\Debug\hid-report-tool.csproj.CoreCompileInputs.cache
 C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\obj\Debug\hid-report-tool.csproj.CopyComplete
 C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\obj\Debug\hid-report-tool.exe
 C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\obj\Debug\hid-report-tool.pdb
+C:\Wedy\Tool Development\HID Report Tool\hid-report-tool\hid-report-tool\obj\Debug\hid-report-tool.csproj.SuggestedBindingRedirects.cache

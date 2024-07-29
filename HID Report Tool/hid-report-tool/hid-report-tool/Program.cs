@@ -19,7 +19,7 @@ namespace hid_report_tool
             bool program_termination_flag = false;
             dev_list = HidDevices.Enumerate();
             Console.WriteLine("HID Report Tool v1.0 Copyright (c) 2019 by Johannes Berndorfer.\nHID Report Tool V2.0 Copyright (c) 2024 by Wedy Hsiao.");
-            while(!program_termination_flag)
+            while (!program_termination_flag)
             {
                 Console.Write("HRT# ");
                 string raw_cmd = Console.ReadLine();
@@ -197,13 +197,12 @@ namespace hid_report_tool
 
                         //2024 Wedy add the function to read the multiple bytes of InputReport
                         case "listen":
-                            
-
                             if (selected_device == null)
                             {
                                 Console.WriteLine("No device selected.");
                                 break;
                             }
+                            
                             selected_device.OpenDevice();
 
                             Console.WriteLine($"Input Report Byte Length: {selected_device.Capabilities.InputReportByteLength}");
@@ -216,9 +215,11 @@ namespace hid_report_tool
                                 Environment.Exit(0);
                             };
 
-                                try
+                            try
+                            {
+                                while (true)
                                 {
-                                    // Read the report
+                                    // Listen input the report
                                     HidReport reportR = selected_device.ReadReport();
 
                                     // Access the data from the received report
@@ -227,15 +228,54 @@ namespace hid_report_tool
 
                                     Console.WriteLine($"Received InputReport [ID: {report_id_r}] [Data Size: {report_data_r.Length} bytes]");
                                     Console.WriteLine("Data: " + BitConverter.ToString(report_data_r));
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine($"Error reading report: {ex.Message}");
-                                }
 
-                                // Add a delay to avoid high CPU usage
-                                Thread.Sleep(1000);
-                            
+                                    // Wait 
+                                    Thread.Sleep(1000);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Error reading report: {ex.Message}");
+                            }
+
+                            break;
+
+                        //Wedy add for get report
+                        case "get":
+                            byte get_report_id = 0;
+
+                            if (selected_device == null)
+                            {
+                                Console.WriteLine("No device selected.");
+                                break;
+                            }
+
+                            if (cmds.Count() < 3)
+                            {
+                                Console.WriteLine("Syntax: report send <report-id> <report-data>");
+                                break;
+                            }
+
+
+                            if (!byte.TryParse(cmds[2], out get_report_id))
+                            {
+                                Console.WriteLine("The report id given is not a valid id.");
+                                break;
+                            }
+                            selected_device.OpenDevice();
+
+                            try
+                            {
+                                HidReport reportGet = selected_device.ReadReportSync(get_report_id);
+
+                                byte[] report_data_get = reportGet.Data;
+
+                                Console.WriteLine("Get Data: " + BitConverter.ToString(report_data_get));
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Error reading report: {ex.Message}");
+                            }
                             break;
 
                         //Wedy add for set feature report
@@ -416,9 +456,37 @@ namespace hid_report_tool
             HidDevice device = (HidDevice)sender;
             HidReport report = device.ReadReport();
 
-            // Process the received report (report.Data contains the report payload)
-            Console.WriteLine($"Received InputReport [ID: {report.ReportId}] [Data Size: {report.Data.Length} bytes]");
-            Console.WriteLine("Data: " + BitConverter.ToString(report.Data));
+            // Access the data from the received report
+            byte[] report_data = report.Data;
+            byte report_id = report.ReportId;
+
+            Console.WriteLine($"Received InputReport [ID: {report_id}] [Data Size: {report_data.Length} bytes]");
+            Console.WriteLine("Data: " + BitConverter.ToString(report_data));
+        }
+
+        private static void OnReport(HidReport report)
+        {
+            while (true)
+            {
+                if (report.Data.Length > 0)
+                {
+                    byte[] data = report.Data;
+                    // Process data here based on the HID report format
+                    Console.WriteLine($"Received Input Report [ID: {report.ReportId}] [Data Size: {data.Length} bytes]");
+                    Console.WriteLine("Data: " + BitConverter.ToString(data));
+                }
+                Thread.Sleep(1000);
+            }
+        }
+
+        private static void Device_Inserted()
+        {
+            Console.WriteLine("Device inserted.");
+        }
+
+        private static void Device_Removed()
+        {
+            Console.WriteLine("Device removed.");
         }
     }
 }
